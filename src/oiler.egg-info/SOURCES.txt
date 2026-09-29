@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+src/oiler/__init__.py
+src/oiler/functions.py
+src/oiler.egg-info/PKG-INFO
+src/oiler.egg-info/SOURCES.txt
+src/oiler.egg-info/dependency_links.txt
+src/oiler.egg-info/top_level.txt
