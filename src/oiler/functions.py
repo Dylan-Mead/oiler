@@ -93,3 +93,62 @@ def find_divisors(n: int):
     return len(divisors), divisors
 
 
+def is_truncatable_prime(n, primes):
+
+    str_n = str(n)
+    if (set(str_n) & set('0468')):
+        return False
+    for i in range(1, len(str_n)):
+        if int(str_n[i:]) not in primes or int(str_n[:i]) not in primes:
+            return False
+    return True
+
+def string_is_palindrome(s):
+    return s == s[::-1]
+
+def find_curious_numbers(curious_numbers):
+    from math import factorial
+    start = max(curious_numbers, default=10) + 1
+    for i in range(start, 3628800):
+        digits = [int(d) for d in str(i)]
+        digit_sum = 0
+        for digit in digits:
+            digit_sum += factorial(digit)
+        if digit_sum == i:
+            curious_numbers.append(i)
+    return curious_numbers
+
+def simplify(num, den):
+    from math import gcd
+    common_divisor = gcd(num, den)
+    return num // common_divisor, den // common_divisor
+
+def is_pandigital(n):
+    digits = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    s = str(n)
+    return len(s) == 9 and all(str(d) in s for d in digits)
+
+
+def pandigital_products():
+    products = set()
+    for a in range(1, 100):
+        for b in range(a, 10000):
+            c = a * b
+            if is_pandigital(f"{a}{b}{c}"):
+                products.add(c)
+    return products
+
+def count_ways_to_make_change(principle, coins):
+    ways = [0] * (principle + 1)
+    ways[0] = 1
+    for coin in coins:
+        for i in range(coin, principle + 1):
+            ways[i] += ways[i - coin]
+    return ways[principle]
+
+def sum_diagonals_0f_square(size: int) -> int:
+    if size % 2 == 0:
+        raise ValueError("Size must be an odd number")
+    if size == 1:
+        return 1
+    return 4 * size * size - 6 * size + 6 + sum_diagonals_0f_square(size - 2)
