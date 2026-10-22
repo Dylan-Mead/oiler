@@ -17,8 +17,6 @@ cat("Run time no divide out:", format(end - start), "\n")
 cat(tail(factors, 1), "\n")
 
 
-
-
 start <- Sys.time()
 
 remaining <- 600851475143
